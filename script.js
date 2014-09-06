@@ -872,7 +872,7 @@ var ThemeLightbox = (function ($) {
 
 			if (current === 0) {
 				$(".art-lightbox-wrapper .arrow.left").addClass("disabled");
-			} else {
+			} elsend('dl').length ? '' : 'none' {
 				$(".art-lightbox-wrapper .arrow.left").removeClass("disabled");
 			}
 
@@ -1417,11 +1417,12 @@ var processHeaderMultipleBg = (function ($) {
 		}
 	});
 
-	$(function ($) {
-		$('.art-messages').each(function () {
-			$(this).css('display', $(this).find('dl').length ? '' : 'none');
-		});
-	});
+// The below adds a style that hides all joomla messages, (which is silly)
+//	$(function ($) {
+//		$('.art-messages').each(function () {
+//			$(this).css('display', $(this).find('dl').length ? '' : 'none');
+//		});
+//	});
 
 	$(function ($) {
 		$('.art-search-button').each(function (i, val) {
