@@ -46,13 +46,13 @@ JHtml::_( 'behavior.framework', true );
 
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 	<script>if ('undefined' != typeof jQuery) document._artxJQueryBackup = jQuery;</script>
-	<script src="<?php echo $templateUrl; ?>/src/jquery.js"></script>
+	<script src="<?php echo $templateUrl; ?>/jquery.js"></script>
 	<script>jQuery.noConflict();</script>
 
-	<script src="<?php echo $templateUrl; ?>/src/script.js"></script>
+	<script src="<?php echo $templateUrl; ?>/script.js"></script>
 	<?php $view->includeInlineScripts() ?>
 	<script>if (document._artxJQueryBackup) jQuery = document._artxJQueryBackup;</script>
-	<script src="<?php echo $templateUrl; ?>/src/script.responsive.js"></script>
+	<script src="<?php echo $templateUrl; ?>/script.responsive.js"></script>
 </head>
 <body>
 
@@ -96,7 +96,7 @@ JHtml::_( 'behavior.framework', true );
 		</div>
 
 		<div class="art-textblock art-object1266278759" data-left="97.77%">
-			<form class="art-search" name="Search" action="<?php echo $document->baseurl; ?>/src/index.php" method="post">
+			<form class="art-search" name="Search" action="<?php echo $document->baseurl; ?>/index.php" method="post">
 				<input type="text" value="" name="searchword">
 				<input type="hidden" name="task" value="search">
 				<input type="hidden" name="option" value="com_search">

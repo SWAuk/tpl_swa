@@ -872,7 +872,7 @@ var ThemeLightbox = (function ($) {
 
 			if (current === 0) {
 				$(".art-lightbox-wrapper .arrow.left").addClass("disabled");
-			} elsend('dl').length ? '' : 'none' {
+			} else {
 				$(".art-lightbox-wrapper .arrow.left").removeClass("disabled");
 			}
 
