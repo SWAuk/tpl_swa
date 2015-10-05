@@ -24,6 +24,14 @@ $view->componentWrapper();
 
 JHtml::_('behavior.framework', true);
 
+$lessSiteFile = $templateUrl . "/css/site.less";
+$lessGlobalVars = array(
+	'testvar' => '#0000FF'
+);
+
+$lessJs = "//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js";
+$bootstrapJs = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js";
+
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="<?php echo $document->language; ?>">
@@ -32,95 +40,64 @@ JHtml::_('behavior.framework', true);
     <link rel="stylesheet" href="<?php echo $document->baseurl; ?>/templates/system/css/system.css" />
     <link rel="stylesheet" href="<?php echo $document->baseurl; ?>/templates/system/css/general.css" />
 
-    <!-- Created by Artisteer v4.1.0.59861 -->
-    
-    
-    <meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no, width = device-width">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
 
     <!--[if lt IE 9]><script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    <link rel="stylesheet" href="<?php echo $templateUrl; ?>/css/template.css" media="screen">
-    <!--[if lte IE 7]><link rel="stylesheet" href="<?php echo $templateUrl; ?>/css/template.ie7.css" media="screen" /><![endif]-->
-    <link rel="stylesheet" href="<?php echo $templateUrl; ?>/css/template.responsive.css" media="all">
+    
+    <link data-dump-line-numbers="all"
+    	data-global-vars='<?php echo json_encode($lessGlobalVars); ?>'
+        rel="stylesheet/less" type="text/css"
+        href="<?php echo $lessSiteFile; ?>">
 
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <script>if ('undefined' != typeof jQuery) document._artxJQueryBackup = jQuery;</script>
-    <script src="<?php echo $templateUrl; ?>/jquery.js"></script>
-    <script>jQuery.noConflict();</script>
+	<script type="text/javascript" src="<?php echo $lessJs; ?>"></script>
 
-    <script src="<?php echo $templateUrl; ?>/script.js"></script>
-    <?php $view->includeInlineScripts() ?>
-    <script>if (document._artxJQueryBackup) jQuery = document._artxJQueryBackup;</script>
-    <script src="<?php echo $templateUrl; ?>/script.responsive.js"></script>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
 </head>
 <body>
 
 <div id="swa-main">
-<header class="swa-header"><?php echo $view->position('position-30', 'swa-nostyle'); ?>
-<div class="swa-slider swa-slidecontainerheader" data-width="1680" data-height="200">
-    <div class="swa-slider-inner">
-<div class="swa-slide-item swa-slideheader0">
-<div class="swa-slideheader0-object93813107" data-left="6.72%"></div>
-
-</div>
-<div class="swa-slide-item swa-slideheader1">
-<div class="swa-slideheader1-object1939753444" data-left="6.72%"></div>
-
-</div>
-<div class="swa-slide-item swa-slideheader2">
-<div class="swa-slideheader2-object1121155487" data-left="6.72%"></div>
-
-</div>
-<div class="swa-slide-item swa-slideheader3">
-<div class="swa-slideheader3-object831681715" data-left="6.72%"></div>
-
-</div>
-<div class="swa-slide-item swa-slideheader4">
-<div class="swa-slideheader4-object1019377783" data-left="6.72%"></div>
-
-</div>
-<div class="swa-slide-item swa-slideheader5">
-<div class="swa-slideheader5-object914270289" data-left="6.72%"></div>
-
-</div>
-
-    </div>
-</div>
-<div class="swa-slidenavigator swa-slidenavigatorheader" data-left="92.62">
-<a href="#" class="swa-slidenavigatoritem"></a><a href="#" class="swa-slidenavigatoritem"></a><a href="#" class="swa-slidenavigatoritem"></a><a href="#" class="swa-slidenavigatoritem"></a><a href="#" class="swa-slidenavigatoritem"></a><a href="#" class="swa-slidenavigatoritem"></a>
-</div>
-
-
-
-    <div class="swa-shapes">
-
-            </div>
-
-
-
-<div class="swa-textblock swa-object1266278759" data-left="97.77%">
-    <form class="swa-search" name="Search" action="<?php echo $document->baseurl; ?>/index.php" method="post">
-    <input type="text" value="" name="searchword">
-    <input type="hidden" name="task" value="search">
-<input type="hidden" name="option" value="com_search">
-<input type="submit" value="Search" name="search" class="swa-search-button">
-</form>
-</div>
-<?php if ($view->containsModules('position-1', 'position-28', 'position-29')) : ?>
-<nav class="swa-nav">
+<header class="swa-header">
+	<?php echo $view->position('position-30', 'swa-nostyle'); ?>
     
-<?php if ($view->containsModules('position-28')) : ?>
-<div class="swa-hmenu-extra1"><?php echo $view->position('position-28'); ?></div>
-<?php endif; ?>
-<?php if ($view->containsModules('position-29')) : ?>
-<div class="swa-hmenu-extra2"><?php echo $view->position('position-29'); ?></div>
-<?php endif; ?>
-<?php echo $view->position('position-1'); ?>
- 
+    <?php if ($view->containsModules('position-1', 'position-28', 'position-29')) : ?>
+    <nav class="swa-top-nav">
+    	<div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                	data-target="#swa-top-level-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">SWA</a>
+            </div>
+            
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="swa-top-level-collapse">
+				<?php echo $view->position('position-1'); ?>
+				<?php if ($view->containsModules('position-28')) : ?>
+                <?php echo $view->position('position-28'); ?></li>
+                <?php endif; ?>
+                <?php if ($view->containsModules('position-29')) : ?>
+                <?php echo $view->position('position-29'); ?></li>
+                <?php endif; ?>
+                <form class="navbar-form navbar-right" role="search"
+                	name="Search" action="<?php echo $document->baseurl; ?>/index.php" method="POST">
+                    <div class="form-group">
+                    	<input type="text" class="form-control" name="searchword">
+                    </div>
+                    <input type="hidden" name="task" value="search">
+                    <input type="hidden" name="option" value="com_search">
+                    <button type="submit" class="btn btn-default">Search</button>
+                </form>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
     </nav>
-<?php endif; ?>
-
-                    
+    <?php endif; ?>
 </header>
+
 <div class="swa-sheet clearfix">
             <?php echo $view->position('position-15', 'swa-nostyle'); ?>
 <?php echo $view->positions(array('position-16' => 33, 'position-17' => 33, 'position-18' => 34), 'swa-block'); ?>
@@ -176,4 +153,7 @@ JHtml::_('behavior.framework', true);
 
 <?php echo $view->position('debug'); ?>
 </body>
+
+<script type="text/javascript" src="<?php echo $bootstrapJs; ?>"></script>
+
 </html>

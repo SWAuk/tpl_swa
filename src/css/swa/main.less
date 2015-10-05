@@ -1,0 +1,31 @@
+/*
+ * Main SWA Less CSS file
+ * To compile, see http://lesscss.org/
+ *
+ * Author: Chris Watts
+ * Date 04/09/2015
+ */
+
+@import "typography.less";
+@import "variables.less";
+ 
+body {
+	/* Required for navbar-fixed-top */
+	padding-top: @navbar-height;
+}
+ 
+.swa-header {
+	background-color: rgba(0,0,0,0.5);
+	width: 100%;
+}
+ 
+.swa-top-nav {
+	.navbar;
+	.navbar-inverse;
+	.navbar-fixed-top;
+}
+
+.swa-hmenu {
+	.nav;
+	.navbar-nav;
+}
