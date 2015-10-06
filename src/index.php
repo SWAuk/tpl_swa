@@ -61,7 +61,7 @@ $bootstrapJs = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js";
 	<?php echo $view->position('position-30', 'swa-nostyle'); ?>
     
     <?php if ($view->containsModules('position-1', 'position-28', 'position-29')) : ?>
-    <nav class="swa-top-nav">
+    <nav class="navbar navbar-inverse navbar-fixed-top swa-top-nav">
     	<div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"

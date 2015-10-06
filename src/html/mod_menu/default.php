@@ -16,7 +16,7 @@ if (isset($attribs['name']) && $attribs['name'] == 'position-1') {
     // true - skip the current node, false - render the current node.
     $skip = false;
     
-    echo '<ul class="swa-hmenu"' . $tag . '>';
+    echo '<ul class="nav navbar-nav swa-hmenu"' . $tag . '>';
     foreach ($list as $i => & $item) {
         if ($skip) {
             if ($item->shallower) {
