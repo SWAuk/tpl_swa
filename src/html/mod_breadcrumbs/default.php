@@ -10,39 +10,41 @@
 defined('_JEXEC') or die;
 ?>
 
-<div class="breadcrumbs<?php echo $moduleclass_sfx; ?>">
+<ol class="breadcrumb<?php echo $moduleclass_sfx; ?>">
 <?php if ($params->get('showHere', 1))
 	{
-		echo '<span class="showHere">' .JText::_('MOD_BREADCRUMBS_HERE').'</span>';
+		echo '<span class="showHere">'.JText::_('MOD_BREADCRUMBS_HERE').'</span>';
 	}
 ?>
-<?php for ($i = 0; $i < $count; $i ++) :
+<?php for ($i = 0; $i < $count; $i++) :
 	// Workaround for duplicate Home when using multilanguage
 	if ($i == 1 && !empty($list[$i]->link) && !empty($list[$i - 1]->link) && $list[$i]->link == $list[$i - 1]->link) {
 		continue;
 	}
-	// If not the last item in the breadcrumbs add the separator
-	if ($i < $count - 1)
-	{
-		if (!empty($list[$i]->link)) {
-			echo '<a href="'.$list[$i]->link.'" class="pathway">'.$list[$i]->name.'</a>';
-		} else {
-			echo '<span>';
-			echo $list[$i]->name;
-			echo '</span>';
+	
+	// Special requests for current page
+	if ($i == $count - 1) {
+		if ($params->get('showLast', 1) == false) {
+			continue;
 		}
-		if ($i < $count - 2)
-		{
-			echo ' '.$separator.' ';
-		}
-	}  elseif ($params->get('showLast', 1)) { // when $i == $count -1 and 'showLast' is true
-		if ($i > 0)
-		{
-			echo ' '.$separator.' ';
-		}
-		echo '<span>';
-		echo $list[$i]->name;
-		echo '</span>';
+		
+		// We don't need a link for the current page!
+		$list[$i]->link = '';
+		
+		$active = 'class="active"';
+	} else {
+		$active = '';
 	}
+	
+	echo "<li $active>";
+	
+	if (!empty($list[$i]->link)) {
+		echo '<a href="'.$list[$i]->link.'">'.$list[$i]->name.'</a>';
+	} else {
+		echo $list[$i]->name;
+	}
+	
+	echo '</li>';
+	
 endfor; ?>
 </div>

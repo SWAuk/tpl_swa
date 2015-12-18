@@ -11,12 +11,16 @@ if (isset($attribs['name']) && $attribs['name'] == 'position-1') {
 
     $start = $params->get('startLevel');
 
-    // check if it is necessary to render subitems:
-    $subitems = $GLOBALS['artx_settings']['menu']['show_submenus'] && 1 == $params->get('showAllChildren');
     // true - skip the current node, false - render the current node.
     $skip = false;
     
-    echo '<ul class="swa-hmenu"' . $tag . '>';
+	// limit of rendering - skip items when a level is exceeding the limit.
+	// Submenus just don't have much of a place on the web right now, especially the mobile web.
+	// - A wise man
+	$limit = $start + 1;
+	$limit = $params->get('showAllChildren') ? $limit : $start;
+	
+    echo '<ul class="nav navbar-nav swa-hmenu"' . $tag . '>';
     foreach ($list as $i => & $item) {
         if ($skip) {
             if ($item->shallower) {
@@ -33,10 +37,9 @@ if (isset($attribs['name']) && $attribs['name'] == 'position-1') {
         $class .= ('alias' == $item->type
             && in_array($item->params->get('aliasoptions'), $path)
             || in_array($item->id, $path)) ? ' active' : '';
-        $class .= $item->deeper ? ' deeper' : '';
-        $class .= $item->parent ? ' parent' : '';
+        $class .= $item->parent ? ' dropdown' : '';
 
-        echo '<li class="' . $class . '">';
+        echo "<li class='$class'>";
 
         // Render the menu item.
         switch ($item->type) {
@@ -49,13 +52,14 @@ if (isset($attribs['name']) && $attribs['name'] == 'position-1') {
                 require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
                 break;
         }
+		
         if ($item->deeper) {
-            if (!$subitems) {
-                $limit = $item->level;
-                $skip = true;
-                continue;
-            }
-            echo '<ul>';
+			if ($item->level >= $limit) {
+				$skip = true;
+				continue;
+			}
+			
+            echo '<ul class="dropdown-menu">';
         }
         elseif ($item->shallower)
             echo '</li>' . str_repeat('</ul></li>', $item->level_diff);
@@ -68,14 +72,12 @@ if (isset($attribs['name']) && $attribs['name'] == 'position-1') {
 
     $start = $params->get('startLevel');
 
-    // check if it is necessary to render subitems:
-    $subitems = $GLOBALS['artx_settings']['vmenu']['show_submenus'] && 1 == $params->get('showAllChildren');
     // true - skip the current node, false - render the current node.
     $skip = false;
     // limit of rendering - skip items when a level is exceeding the limit.
     $limit = $start;
 
-    echo '<ul class="swa-vmenu"' . $tag . '>';
+    echo '<ul class="nav nav-stacked swa-vmenu"' . $tag . '>';
     foreach ($list as $i => & $item) {
         if ($skip) {
             if ($item->shallower) {
@@ -92,10 +94,9 @@ if (isset($attribs['name']) && $attribs['name'] == 'position-1') {
         $class .= ('alias' == $item->type
             && in_array($item->params->get('aliasoptions'), $path)
             || in_array($item->id, $path)) ? ' active' : '';
-        $class .= $item->deeper ? ' deeper' : '';
-        $class .= $item->parent ? ' parent' : '';
+        $class .= $item->parent ? ' dropdown' : '';
 
-        echo '<li class="' . $class . '">';
+        echo "<li class='$class'>";
 
         // Render the menu item.
         switch ($item->type) {
@@ -108,13 +109,14 @@ if (isset($attribs['name']) && $attribs['name'] == 'position-1') {
                 require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
                 break;
         }
+		
         if ($item->deeper) {
-            if (!$subitems) {
-                $limit = $item->level;
-                $skip = true;
-                continue;
-            }
-            echo '<ul' . ($subitems && in_array($item->id, $path) ? ' class="active"' : '') . '>';
+			if ($item->level >= $limit) {
+				$skip = true;
+				continue;
+			}
+				
+            echo '<ul class="dropdown-menu' . in_array($item->id, $path) ? ' active' : '' . '">';
         }
         elseif ($item->shallower)
             echo '</li>' . str_repeat('</ul></li>', $item->level_diff);
@@ -133,7 +135,7 @@ if (isset($attribs['name']) && $attribs['name'] == 'position-1') {
             && in_array($item->params->get('aliasoptions'), $path)
             || in_array($item->id, $path)) ? ' active' : '';
         $class .= $item->deeper ? ' deeper' : '';
-        $class .= $item->parent ? ' parent' : '';
+        $class .= $item->parent ? ' dropdown' : '';
 
         echo '<li class="' . $class . '">';
 

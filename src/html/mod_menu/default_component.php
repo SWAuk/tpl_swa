@@ -5,6 +5,7 @@ defined('_JEXEC') or die;
 $attributes = array(
     'class' => array($item->params->get('menu-anchor_css', '')),
     'title' => $item->params->get('menu-anchor_title', ''));
+	
 switch ($item->browserNav) {
     default:
     case 0:
@@ -27,6 +28,16 @@ $linktype = $item->menu_image
     ? ('<img class="swa-menu-image" src="' . $item->menu_image . '" alt="' . $item->title . '" />'
         . ($item->params->get('menu_text', 1) ? $item->title : ''))
     : $item->title;
+	
+if ($item->deeper && $item->level < $limit) {
+	$attributes['class'][] = 'dropdown-toggle';
+	$attributes['data-toggle'] = 'dropdown';
+	$attributes['role'] = 'button';
+	$attributes['aria-haspopup'] = 'true';
+	$attributes['aria-expanded'] = 'false';
+	$attributes['href'] = '#';
+	$linktype .= ' <span class="caret"></span>';
+}
 
 if (('horizontal' == $menutype || 'vertical' == $menutype)
     && ('alias' == $item->type && in_array($item->params->get('aliasoptions'), $path) || in_array($item->id, $path)))
