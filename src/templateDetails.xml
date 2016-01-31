@@ -51,6 +51,9 @@
         <position>position-28</position>
         <position>position-29</position>
         <position>position-30</position>
+        <position>menu-search</position>
+        <position>menu-login</position>
+        <position>breadcrumbs</position>
     </positions>
     <config>
         <fields name="params">
@@ -58,6 +61,6 @@
         </fields>
     </config>
     <languages folder="language">
-        <language tag="en-GB">en-GB/en-GB.tpl_swa3_template_v4.ini</language>
+        <language tag="en-GB">en-GB/en-GB.tpl_swa3_template_v5.ini</language>
     </languages>
 </extension>

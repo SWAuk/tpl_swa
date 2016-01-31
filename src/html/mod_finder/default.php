@@ -17,7 +17,7 @@ $lang = JFactory::getLanguage();
 $lang->load('com_finder', JPATH_SITE);
 
 $suffix = $params->get('moduleclass_sfx');
-$output = '<input type="text" name="q" id="mod-finder-searchword" class="inputbox" size="' . $params->get('field_size', 20) . '" value="' . htmlspecialchars(JFactory::getApplication()->input->get('q', '', 'string')) . '" />';
+$output = '<input type="text" name="q" id="mod-finder-searchword" class="form-control" size="' . $params->get('field_size', 20) . '" value="' . htmlspecialchars(JFactory::getApplication()->input->get('q', '', 'string')) . '" />';
 $button = '';
 $label = '';
 
@@ -50,7 +50,7 @@ if ($params->get('show_label', 1))
 if ($params->get('show_button', 1))
 {
 
-	$button = '<input class="button swa-search-button ' . $suffix . ' finder' . $suffix . '" type="submit" value="' . JText::_('MOD_FINDER_SEARCH_BUTTON') . '">';
+	$button = '<button class="btn btn-default swa-search-button ' . $suffix . ' finder' . $suffix . '" type="submit" value="' . JText::_('MOD_FINDER_SEARCH_BUTTON') . '">';
 
 	switch ($params->get('button_pos', 'right')):
 		case 'top' :
@@ -132,7 +132,7 @@ JHtml::stylesheet('com_finder/finder.css', false, true, false);
 //]]>
 </script>
 
-<form id="mod-finder-searchform" action="<?php echo JRoute::_($route); ?>" method="get" class="swa-search">
+<form id="mod-finder-searchform" class="form-horizontal" action="<?php echo JRoute::_($route); ?>" method="get" class="swa-search">
 	<div class="finder<?php echo $suffix; ?>">
 		<?php
 		// Show the form fields.

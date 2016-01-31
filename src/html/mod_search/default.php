@@ -8,48 +8,24 @@
 
 // no direct access
 defined('_JEXEC') or die;
+
 ?>
 <form action="<?php echo JRoute::_('index.php');?>" class="swa-search" method="post">
 	<div class="search<?php echo $moduleclass_sfx ?>">
-		<?php
-			$output = '<label for="mod-search-searchword">'.$label.'</label><input name="searchword" id="mod-search-searchword" maxlength="'.$maxlength.'"  class="inputbox'.$moduleclass_sfx.'" type="text" size="'.$width.'" value="'.$text.'"  onblur="if (this.value==\'\') this.value=\''.$text.'\';" onfocus="if (this.value==\''.$text.'\') this.value=\'\';" />';
-			if ($button) {
-				if ($imagebutton) {
-					if ($img) {
-						$img = 'type="image" src="' . $img . '"';
-					}
-					$button = '<input value="'.$button_text.'" class="button swa-search-button '.$moduleclass_sfx.'" ' . $img .' onclick="this.form.searchword.focus();"/>';
-				}
-				else {
-					$button = '<input type="submit" value="'.$button_text.'" class="button swa-search-button '.$moduleclass_sfx.'" onclick="this.form.searchword.focus();"/>';
-				}
-			}
+		<?php if ($button_pos == 'left' || $button_pos == 'top'): ?>
+			<button type="submit" class="btn btn-default"><?php echo $button_text ?></button>
+		<?php endif; ?>
 
-			switch ($button_pos) :
-				case 'top' :
-					$button = $button.'<br />';
-					$output = $button.$output;
-					break;
+		<div class="form-group">
+			<input type="text" id="mod-search-searchword" class="form-control" name="searchword" placeholder="<?php echo $text ?>">
+		</div>
 
-				case 'bottom' :
-					$button = '<br />'.$button;
-					$output = $output.$button;
-					break;
+		<?php if ($button_pos == 'right' || $button_pos == 'bottom'): ?>
+			<button type="submit" class="btn btn-default"><?php echo $button_text ?></button>
+		<?php endif; ?>
 
-				case 'right' :
-					$output = $output.$button;
-					break;
-
-				case 'left' :
-				default :
-					$output = $button.$output;
-					break;
-			endswitch;
-
-			echo $output;
-		?>
-	<input type="hidden" name="task" value="search" />
-	<input type="hidden" name="option" value="com_search" />
-	<input type="hidden" name="Itemid" value="<?php echo $mitemid; ?>" />
+		<input type="hidden" name="task" value="search">
+		<input type="hidden" name="option" value="com_search">
+		<input type="hidden" name="Itemid" value="<?php echo $mitemid; ?>">
 	</div>
 </form>

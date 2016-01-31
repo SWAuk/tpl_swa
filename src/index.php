@@ -30,7 +30,6 @@ $lessGlobalVars = array(
 );
 
 $lessJs = "//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js";
-$bootstrapJs = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js";
 
 ?>
 <!DOCTYPE html>
@@ -60,7 +59,7 @@ $bootstrapJs = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js";
 <header class="swa-header">
     <?php echo $view->position('position-30', 'swa-nostyle'); ?>
     <?php if ($view->containsModules('position-1', 'position-28', 'position-29')) : ?>
-    <nav class="navbar navbar-inverse navbar-fixed-top swa-top-nav">
+    <nav class="navbar navbar-inverse navbar-static-top swa-top-nav">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -72,37 +71,41 @@ $bootstrapJs = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js";
                 </button>
                 <a class="navbar-brand" href="/">SWA</a>
             </div>
+            <!-- /.navbar-header -->
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="swa-top-level-collapse">
                 <?php echo $view->position('position-1'); ?>
-                <?php if ($view->containsModules('position-28')) : ?>
-                <?php echo $view->position('position-28'); ?></li>
+                <?php if ($view->containsModules('menu-login')) : ?>
+                    <ul class="nav navbar-nav swa-hmenu navbar-right">
+                        <li class="dropdown swa-megamenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Login
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="content"><?php echo $view->position('menu-login'); ?></li>
+                            </ul>
+                        </li>
+                    </ul>
                 <?php endif; ?>
-                <?php if ($view->containsModules('position-29')) : ?>
-                <?php echo $view->position('position-29'); ?></li>
-                <?php endif; ?>
-                <form class="navbar-form navbar-right" role="search"
-                    name="Search" action="<?php echo $document->baseurl; ?>/index.php" method="POST">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="searchword">
+                <?php if ($view->containsModules('menu-search')) : ?>
+                    <div class="navbar-form navbar-right swa-menu-search">
+                        <?php echo $view->position('menu-search'); ?>
                     </div>
-                    <input type="hidden" name="task" value="search">
-                    <input type="hidden" name="option" value="com_search">
-                    <button type="submit" class="btn btn-default">Search</button>
-                </form>
+                <?php endif; ?>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
     <?php endif; ?>
-    
-    <div class="swa-spotlight">
-    	<img src="http://blog2012.shawnacropas.com/wp-content/uploads/2013/08/3E9A7052.jpg">
-    </div>
 </header>
 
 <div class="swa-page">
+	<div class="swa-spotlight">
+    	<img src="http://blog2012.shawnacropas.com/wp-content/uploads/2013/08/3E9A7052.jpg">
+    </div>
+    <?php echo $view->position('breadcrumbs', 'swa-nostyle'); ?>
     <div class="container swa-content">
         <?php echo $view->position('position-15', 'swa-nostyle'); ?>
         <?php echo $view->positions(array('position-16' => 33, 'position-17' => 33, 'position-18' => 34), 'swa-block'); ?>
@@ -148,7 +151,5 @@ $bootstrapJs = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js";
 <?php echo $view->position('debug'); ?>
 
 </body>
-
-<script type="text/javascript" src="<?php echo $bootstrapJs; ?>"></script>
 
 </html>
