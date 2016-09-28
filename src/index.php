@@ -131,6 +131,7 @@ $lessJs = "//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js";
                 echo $view->position('position-25', 'swa-nostyle');
                 ?>
         </div>
+        <div style="clear:both;"></div>
         <?php echo $view->positions(array('position-9' => 33, 'position-10' => 33, 'position-11' => 34), 'swa-block'); ?>
         <?php echo $view->position('position-26', 'swa-nostyle'); ?>
     </div>
