@@ -1,6 +1,12 @@
 <?php
 defined('_JEXEC') or die;
 
+/**
+ * Note from Addshore:
+ * Something is messed up in this dile meaning that menue that are more than 2 levels deep DO NOT
+ * WORK
+ */
+
 require_once dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . 'functions.php';
 
 // Note: it is important to remove spaces between elements.
@@ -37,20 +43,22 @@ if (isset($attribs['name']) && $attribs['name'] == 'position-1') {
         $class .= ('alias' == $item->type
             && in_array($item->params->get('aliasoptions'), $path)
             || in_array($item->id, $path)) ? ' active' : '';
-        $class .= $item->parent ? ' dropdown' : '';
+        $class .= $item->parent ? ' dropdown swa-megamenu' : '';
 
         echo "<li class='$class'>";
 
         // Render the menu item.
-        switch ($item->type) {
-            case 'separator':
-            case 'url':
-            case 'component':
-                require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
-                break;
-            default:
-                require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
-                break;
+        if (!$item->deeper) {
+            switch ($item->type) {
+                case 'separator':
+                case 'url':
+                case 'component':
+                    require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
+                    break;
+                default:
+                    require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
+                    break;
+            }
         }
 		
         if ($item->deeper) {
@@ -58,7 +66,10 @@ if (isset($attribs['name']) && $attribs['name'] == 'position-1') {
 				$skip = true;
 				continue;
 			}
-			
+
+            echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">';
+            echo $item->title;
+            echo ' <span class="caret"></span></a>';
             echo '<ul class="dropdown-menu">';
         }
         elseif ($item->shallower)
@@ -99,24 +110,29 @@ if (isset($attribs['name']) && $attribs['name'] == 'position-1') {
         echo "<li class='$class'>";
 
         // Render the menu item.
-        switch ($item->type) {
-            case 'separator':
-            case 'url':
-            case 'component':
-                require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
-                break;
-            default:
-                require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
-                break;
+        if (!$item->deeper) {
+            switch ($item->type) {
+                case 'separator':
+                case 'url':
+                case 'component':
+                    require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
+                    break;
+                default:
+                    require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
+                    break;
+            }
         }
-		
+
         if ($item->deeper) {
-			if ($item->level >= $limit) {
-				$skip = true;
-				continue;
-			}
-				
-            echo '<ul class="dropdown-menu' . in_array($item->id, $path) ? ' active' : '' . '">';
+            if ($item->level >= $limit) {
+                $skip = true;
+                continue;
+            }
+
+            echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">';
+            echo $item->title;
+            echo ' <span class="caret"></span></a>';
+            echo '<ul class="dropdown-menu">';
         }
         elseif ($item->shallower)
             echo '</li>' . str_repeat('</ul></li>', $item->level_diff);
