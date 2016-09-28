@@ -97,7 +97,7 @@ $bootstrapJs = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js";
     </nav>
     <?php endif; ?>
     
-    <div class="swa-spotlight">
+    <div class="swa-spotlight" style="max-height:40vh;">
     	<img src="http://blog2012.shawnacropas.com/wp-content/uploads/2013/08/3E9A7052.jpg">
     </div>
 </header>
@@ -116,8 +116,11 @@ $bootstrapJs = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js";
         <div class="col-md-10 swa-content-main">
             <?php
                 echo $view->position('position-19', 'swa-nostyle');
-                if ($view->containsModules('position-2'))
-                  echo artxPost($view->position('position-2'));
+                if ($view->containsModules('position-2')){
+                    // XXX LOL there is an odd closing div, we need this div to fix everything?
+                    echo "<div>";
+                    echo artxPost($view->position('position-2'));
+                }
                 echo $view->positions(array('position-20' => 50, 'position-21' => 50), 'swa-article');
                 echo $view->position('position-12', 'swa-nostyle');
                 echo artxPost(array('content' => '<jdoc:include type="message" />', 'classes' => ' swa-messages'));
@@ -127,6 +130,7 @@ $bootstrapJs = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js";
                 echo $view->position('position-25', 'swa-nostyle');
                 ?>
         </div>
+        <!-- DIV CLOSED class="col-md-10 swa-content-main"-->
         <?php echo $view->positions(array('position-9' => 33, 'position-10' => 33, 'position-11' => 34), 'swa-block'); ?>
         <?php echo $view->position('position-26', 'swa-nostyle'); ?>
     </div>
