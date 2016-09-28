@@ -98,7 +98,7 @@ $bootstrapJs = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js";
     <?php endif; ?>
     
     <div class="swa-spotlight" style="max-height:40vh;">
-    	<img src="http://blog2012.shawnacropas.com/wp-content/uploads/2013/08/3E9A7052.jpg">
+    	<?php echo "<img src=\"$templateUrl/images/v5_spotlight_default.jpg\""> ?>
     </div>
 </header>
 
