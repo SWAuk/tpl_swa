@@ -130,6 +130,7 @@ $bootstrapJs = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js";
                 echo $view->position('position-25', 'swa-nostyle');
                 ?>
         </div>
+        <div style="clear:both;"></div>
         <!-- DIV CLOSED class="col-md-10 swa-content-main"-->
         <?php echo $view->positions(array('position-9' => 33, 'position-10' => 33, 'position-11' => 34), 'swa-block'); ?>
         <?php echo $view->position('position-26', 'swa-nostyle'); ?>
