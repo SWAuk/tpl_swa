@@ -14,21 +14,42 @@
  
 .swa-top-nav {
 	background-color: rgba(0,0,0,0.92);
+	margin-bottom: 0;
 }
 
 .swa-hmenu {
 }
 
-.swa-spotlight {
-	max-height: @slider-height;
-	overflow: hidden;
-	
-	img {
-		width: 100%;
-	}
+.swa-menu-search {
+	margin-bottom: 0;
 }
 
-/* Dropdown menu disappearing fix (conflict with Prototype and Bootstrap) */
-.dropdown {
-	display: inherit !important;
+/* Mega menu */
+.swa-megamenu {
+	// Reset positions
+	.nav, .collapse, .dropup, .dropdown {
+		position: static;
+	}
+
+	// Propagate menu position under container for full-width navbars
+	.container {
+		position: relative;
+	}
+
+	// By default aligns menu to left
+	.dropdown-menu {
+		left: auto;
+		min-width: 300px;
+	}
+
+	// Content with padding
+	.content {
+		padding: 20px 30px;
+	}
+
+	// Fullwidth menu
+	.dropdown.full-width .dropdown-menu {
+		left: 0;
+		right: 0;
+	}
 }

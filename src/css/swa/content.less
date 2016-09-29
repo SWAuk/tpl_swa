@@ -9,13 +9,33 @@
 @import "variables.less";
 
 .swa-page {
+	/* Padding so navbar doesn't eat into the page - uncomment if using navbar-fixed-top */
+	//padding-top: @navbar-height;
+}
+
+.swa-spotlight {
+	@media (min-width: @screen-sm-min) {
+		/* For translucent navbar when using spotlight */
+		margin-top: -@navbar-height;
+	}
+	
+	max-height: @slider-height;
+	overflow: hidden;
+	
+	img {
+		width: 100%;
+	}
 }
  
 .swa-content {
 	padding: 20px 0;
 }
 
-.swa-sidebar {	
+.swa-sidebar {
+	ul.menu {
+		padding-left: 0;
+		list-style: none;
+	}
 }
 
 .swa-content-main {

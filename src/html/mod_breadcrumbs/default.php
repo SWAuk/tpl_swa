@@ -47,4 +47,4 @@ defined('_JEXEC') or die;
 	echo '</li>';
 	
 endfor; ?>
-</div>
+</ol>

@@ -1,0 +1,27 @@
+/*
+ * SWA Widgets Less file
+ * To compile, see http://lesscss.org/
+ *
+ * Author: Chris Watts
+ * Date 13/10/2015
+ */
+
+@import "variables.less";
+
+.swa-circle-button(@size) {
+	border-radius: 50%;
+	width: @size;
+	height: @size;
+}
+
+.swa-circle-button-sm {
+	.swa-circle-button(100px);
+}
+
+.swa-circle-button-md {
+	.swa-circle-button(200px);
+}
+
+.swa-circle-button-lg {
+	.swa-circle-button(300px);
+}
