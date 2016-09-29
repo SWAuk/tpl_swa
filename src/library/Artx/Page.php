@@ -95,8 +95,7 @@ class ArtxPage
         $result .= '<div class="swa-content-layout-row">';
         foreach ($cells as $name => $width)
             $result .='<div class="swa-layout-cell' . ('swa-block' == $style ? ' swa-layout-sidebar-bg' : '')
-                . '" style="width: ' . $width. '%;float:left;">' . $this->position($name, $style) .
-                '</div>';
+                . '" style="width: ' . $width. '%;float:left;">' . $this->position($name, $style) . '</div>';
         $result .= '</div>';
         $result .= '</div>';
         return $result;
