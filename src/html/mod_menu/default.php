@@ -1,6 +1,12 @@
 <?php
 defined('_JEXEC') or die;
 
+/**
+ * Note from Addshore:
+ * Something is messed up in this dile meaning that menue that are more than 2 levels deep DO NOT
+ * WORK
+ */
+
 require_once dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . 'functions.php';
 
 // Note: it is important to remove spaces between elements.

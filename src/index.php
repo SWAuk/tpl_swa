@@ -103,7 +103,7 @@ $lessJs = "//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js";
 
 <div class="swa-page">
 	<div class="swa-spotlight">
-    	<img src="http://blog2012.shawnacropas.com/wp-content/uploads/2013/08/3E9A7052.jpg">
+    	<?php echo "<img src=\"$templateUrl/images/v5_spotlight_default.jpg\">"; ?>
     </div>
     <?php echo $view->position('breadcrumbs', 'swa-nostyle'); ?>
     <div class="container swa-content">
@@ -119,8 +119,9 @@ $lessJs = "//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js";
         <div class="col-md-10 swa-content-main">
             <?php
                 echo $view->position('position-19', 'swa-nostyle');
-                if ($view->containsModules('position-2'))
-                  echo artxPost($view->position('position-2'));
+                if ($view->containsModules('position-2')){
+                    echo artxPost($view->position('position-2'));
+                }
                 echo $view->positions(array('position-20' => 50, 'position-21' => 50), 'swa-article');
                 echo $view->position('position-12', 'swa-nostyle');
                 echo artxPost(array('content' => '<jdoc:include type="message" />', 'classes' => ' swa-messages'));
@@ -130,6 +131,8 @@ $lessJs = "//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js";
                 echo $view->position('position-25', 'swa-nostyle');
                 ?>
         </div>
+        <div class="clearfix"></div>
+        <!-- DIV CLOSED class="col-md-10 swa-content-main"-->
         <?php echo $view->positions(array('position-9' => 33, 'position-10' => 33, 'position-11' => 34), 'swa-block'); ?>
         <?php echo $view->position('position-26', 'swa-nostyle'); ?>
     </div>
@@ -152,4 +155,5 @@ $lessJs = "//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js";
 
 </body>
 
+<!--<script type="text/javascript" src="<?php echo $bootstrapJs; ?>"></script>-->
 </html>
