@@ -131,8 +131,6 @@ $lessJs = "//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js";
                 echo $view->position('position-25', 'swa-nostyle');
                 ?>
         </div>
-        <div class="clearfix"></div>
-        <!-- DIV CLOSED class="col-md-10 swa-content-main"-->
         <?php echo $view->positions(array('position-9' => 33, 'position-10' => 33, 'position-11' => 34), 'swa-block'); ?>
         <?php echo $view->position('position-26', 'swa-nostyle'); ?>
     </div>
@@ -154,6 +152,4 @@ $lessJs = "//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js";
 <?php echo $view->position('debug'); ?>
 
 </body>
-
-<!--<script type="text/javascript" src="<?php echo $bootstrapJs; ?>"></script>-->
 </html>
