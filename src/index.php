@@ -102,8 +102,7 @@ $lessJs = "//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js";
 </header>
 
 <div class="swa-page">
-	<div class="swa-spotlight">
-    	<?php echo "<img src=\"$templateUrl/images/v5_spotlight_default.jpg\">"; ?>
+	<div class="swa-spotlight" style="background-image: url('<?php echo "$templateUrl/images/v5_spotlight_default.jpg"; ?>')">
     </div>
     <?php echo $view->position('breadcrumbs', 'swa-nostyle'); ?>
     <div class="container swa-content">
