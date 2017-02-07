@@ -24,6 +24,7 @@ $view->componentWrapper();
 
 JHtml::_('behavior.framework', true);
 
+$version = filemtime(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'templateDetails.xml');
 $lessSiteFile = $templateUrl . "/css/site.less";
 $lessGlobalVars = array(
 	'testvar' => '#0000FF'
@@ -46,7 +47,7 @@ $lessJs = "//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js";
     <link data-dump-line-numbers="all"
     	data-global-vars='<?php echo json_encode($lessGlobalVars); ?>'
         rel="stylesheet/less" type="text/css"
-        href="<?php echo $lessSiteFile; ?>">
+        href="<?php echo $lessSiteFile . '?v=' . $version; ?>">
 
 	<script type="text/javascript" src="<?php echo $lessJs; ?>"></script>
 
@@ -141,10 +142,7 @@ $lessJs = "//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js";
 			<?php if ($view->containsModules('position-27')) : ?>
             <?php echo $view->position('position-27', 'swa-nostyle'); ?>
             <?php else: ?>
-            <a title="RSS" class="swa-rss-tag-icon" style="position: absolute; bottom: 15px; left: 6px; line-height: 32px;" href="#"></a>
-            <div class="swa-copyright">
-                <p>Copyright © 2015 Student Windsurfing Association. All Rights Reserved.</p>
-            </div>
+            <p>Copyright © Student Windsurfing Association. All Rights Reserved.</p>
             <?php endif; ?>
         </div>
     </footer>
