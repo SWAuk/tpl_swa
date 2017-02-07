@@ -53,9 +53,14 @@ img {
 		position: absolute;
 		left: 0;
 		right: 0;
-		margin: @navbar-height/2 auto 0;
+		margin: 0 auto;
 		width: 70vmin;
 		z-index: 100;
+		
+		@media (min-width: @screen-sm-min) {
+			/* For translucent navbar when using spotlight */
+			margin-top: @navbar-height/2;
+		}
 	}
 }
 
