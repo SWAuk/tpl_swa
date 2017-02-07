@@ -69,7 +69,6 @@ $lessJs = "//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js";
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">SWA</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -103,6 +102,8 @@ $lessJs = "//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js";
 
 <div class="swa-page">
 	<div class="swa-spotlight" style="background-image: url('<?php echo "$templateUrl/images/v5_spotlight_default.jpg"; ?>')">
+		<div class="shader-overlay"></div>
+		<img src="<?php echo "$templateUrl/images/swa_overlay.png"; ?>" alt="">
     </div>
     <?php echo $view->position('breadcrumbs', 'swa-nostyle'); ?>
     <div class="container swa-content">

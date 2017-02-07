@@ -24,6 +24,7 @@ img {
 		margin-top: -@navbar-height;
 	}
 	
+	position: relative;
 	width: 100%;
 	height: @slider-height;
 	max-height: @slider-max-height;
@@ -33,8 +34,28 @@ img {
 	background-repeat: no-repeat;
     background-size: cover;
 	
-	img {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+	.shader-overlay {
+		background-image: url(../images/shader.png);
+		position: absolute;
+		left: 0px;
+		top: 0px;
 		width: 100%;
+		height: 100%;
+		z-index: 0;
+		opacity: 0.3;
+	}
+	
+	img {
+		position: absolute;
+		left: 0;
+		right: 0;
+		margin: @navbar-height/2 auto 0;
+		width: 70vmin;
+		z-index: 100;
 	}
 }
 
