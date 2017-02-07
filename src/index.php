@@ -24,13 +24,34 @@ $view->componentWrapper();
 
 JHtml::_('behavior.framework', true);
 
-$version = filemtime(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'templateDetails.xml');
-$lessSiteFile = $templateUrl . "/css/site.less";
-$lessGlobalVars = array(
-	'testvar' => '#0000FF'
-);
+if (isset($develop)) {
 
-$lessJs = "//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js";
+	$lessSiteFile = $templateUrl . "/css/site.less";
+	$lessGlobalVars = json_encode(array(
+		'testvar' => '#0000FF'
+	));
+
+	$lessJs = "//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js";
+	
+	$style = <<<HTML
+	<link data-dump-line-numbers="all"
+    	data-global-vars="$lessGlobalVars"
+        rel="stylesheet/less" type="text/css"
+        href="$lessSiteFile">
+
+	<script type="text/javascript" src="$lessJs"></script>
+HTML;
+
+} else {
+	
+	$version = filemtime(dirname(__FILE__) . '/css/compiled.css');
+	$cssSiteFile = $templateUrl . "/css/compiled.css";
+	
+	$style = <<<HTML
+	<link rel="stylesheet" href="$cssSiteFile?v=$version">
+HTML;
+	
+}
 
 ?>
 <!DOCTYPE html>
@@ -44,12 +65,7 @@ $lessJs = "//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js";
 
     <!--[if lt IE 9]><script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     
-    <link data-dump-line-numbers="all"
-    	data-global-vars='<?php echo json_encode($lessGlobalVars); ?>'
-        rel="stylesheet/less" type="text/css"
-        href="<?php echo $lessSiteFile . '?v=' . $version; ?>">
-
-	<script type="text/javascript" src="<?php echo $lessJs; ?>"></script>
+    <?php echo $style; ?>
 
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
