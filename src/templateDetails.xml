@@ -3,7 +3,7 @@
 <extension version="2.5" client="site" type="template" method="upgrade">
     <name>swa3_template_v5</name>
     <creationDate>2015-10-04</creationDate>
-    <version>14</version>
+    <version>15</version>
     <author>SWA Team</author>
     <authorUrl/>
     <description/>
